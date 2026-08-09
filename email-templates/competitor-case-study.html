@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitor Insight for <%= business_name %></title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #fafaf9; color: #292524; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrapper { width: 100%; background-color: #fafaf9; padding: 40px 20px; }
+  .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); border: 1px solid #e7e5e4; }
+  
+  /* Header */
+  .header { padding: 30px; border-bottom: 1px solid #f5f5f4; }
+  .badge { display: inline-block; padding: 6px 12px; background: #fef3c7; color: #d97706; border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1c1917; margin: 0; }
+  
+  /* Body */
+  .body-content { padding: 30px; }
+  .greeting { font-size: 17px; font-weight: 600; margin-bottom: 20px; }
+  .text-block { font-size: 16px; color: #57534e; margin-bottom: 24px; }
+  .highlight-text { font-weight: 600; color: #000000; }
+  
+  /* Case Study Box */
+  .case-study { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 24px; margin-bottom: 30px; position: relative; }
+  .case-study::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: #3b82f6; border-radius: 10px 0 0 10px; }
+  
+  .issue-row { display: flex; align-items: flex-start; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed #cbd5e1; }
+  .issue-icon { font-size: 20px; margin-right: 12px; line-height: 1; }
+  .issue-desc { font-size: 14px; color: #475569; }
+  .issue-desc strong { color: #0f172a; display: block; margin-bottom: 4px; }
+  
+  .metric-row { display: flex; align-items: center; justify-content: space-between; background: #ffffff; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .metric { text-align: center; flex: 1; }
+  .metric-label { font-size: 11px; text-transform: uppercase; color: #94a3b8; font-weight: 700; margin-bottom: 4px; }
+  .metric-value { font-size: 18px; font-weight: 800; color: #0f172a; }
+  .metric-arrow { color: #22c55e; font-size: 20px; font-weight: bold; margin: 0 15px; }
+  
+  /* CTA */
+  .proposal-box { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border-radius: 10px; padding: 24px; text-align: center; color: #ffffff; margin-bottom: 10px; }
+  .proposal-box p { font-size: 16px; font-weight: 500; margin-bottom: 20px; color: #e0e7ff; }
+  .cta-button { display: inline-block; background: #ffffff; color: #4f46e5 !important; font-size: 16px; font-weight: 700; text-decoration: none; padding: 14px 28px; border-radius: 100px; transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  
+  /* Footer */
+  .footer { padding: 30px; background: #fdfbf7; border-top: 1px solid #f5f5f4; display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-size: 16px; font-weight: 800; color: #1c1917; }
+  .brand span { color: #3b82f6; }
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      
+      <div class="header">
+        <div class="badge">Market Insight</div>
+        <h1><%= competitor_name %> just redesigned their site</h1>
+      </div>
+      
+      <div class="body-content">
+        <div class="greeting">Hi <%= owner_name %>,</div>
+        
+        <div class="text-block">
+          I noticed <strong><%= competitor_name %></strong> in <%= city %> recently updated their website.
+        </div>
+        
+        <div class="case-study">
+          <div class="issue-row">
+            <div class="issue-icon">🛑</div>
+            <div class="issue-desc">
+              <strong>Their old site had the same issues yours does:</strong>
+              <%= outdated_signal_1 %>, slow load times, and poor mobile optimization.
+            </div>
+          </div>
+          
+          <div style="font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 12px; text-align: center;">After the redesign:</div>
+          
+          <div class="metric-row">
+            <div class="metric">
+              <div class="metric-label">Previous</div>
+              <div class="metric-value"><%= old_metric %></div>
+            </div>
+            <div class="metric-arrow">&rarr;</div>
+            <div class="metric">
+              <div class="metric-label">Current</div>
+              <div class="metric-value" style="color: #22c55e;"><%= new_metric %></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-block">
+          I can do the exact same thing for <span class="highlight-text"><%= business_name %></span>. Here's what that looks like:
+        </div>
+        
+        <div class="proposal-box">
+          <p>I mapped out a complete visual breakdown for you.</p>
+          <a href="<%= proposal_url %>" class="cta-button">View Your Custom Plan</a>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <div class="brand">Artum 8 <span>Labs</span></div>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

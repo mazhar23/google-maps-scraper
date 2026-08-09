@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Custom Business Proposal</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #f8f9fa; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+  .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+  .hero { background: linear-gradient(135deg, #4f46e5, #7c3aed); padding: 40px 30px; text-align: center; color: #fff; }
+  .hero h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .hero p { font-size: 0.95rem; opacity: 0.9; }
+  .body { padding: 30px; }
+  .body p { margin-bottom: 16px; color: #4b5563; font-size: 0.95rem; }
+  .highlight-box { background: #f0f0ff; border: 1px solid #4f46e5; border-radius: 8px; padding: 16px; margin: 20px 0; text-align: center; }
+  .highlight-box h3 { color: #4f46e5; font-size: 1.1rem; margin-bottom: 4px; }
+  .highlight-box p { color: #6b7280; font-size: 0.85rem; margin-bottom: 0; }
+  .cta-container { text-align: center; margin: 30px 0 10px; }
+  .cta { display: inline-block; background: #4f46e5; color: #fff !important; text-decoration: none; padding: 14px 32px; border-radius: 100px; font-weight: 600; font-size: 0.95rem; }
+  .footer { background: #f9fafb; padding: 20px 30px; text-align: center; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #e5e7eb; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="hero">
+      <h1>Your Custom Growth Plan</h1>
+      <p>Prepared exclusively for <%= businessName %></p>
+    </div>
+    <div class="body">
+      <p>Hi <%= ownerName %>,</p>
+      <p>Thanks for getting back to us. Based on our analysis of <strong><%= businessName %></strong>, we've put together a tailored proposal outlining exactly how we can help you attract more local customers and streamline your operations.</p>
+      
+      <div class="highlight-box">
+        <h3>Proposal Ready for Review</h3>
+        <p>Includes full audit results, service recommendations, and flexible pricing options.</p>
+      </div>
+      
+      <p>We've created a private link where you can view the full details of our recommendations and the pricing breakdown. Everything is negotiable, and we can adjust the scope to perfectly fit your budget.</p>
+      
+      <div class="cta-container">
+        <a href="<%= proposalUrl %>" class="cta">View Your Custom Proposal →</a>
+      </div>
+      
+      <p style="margin-top:20px; font-size:0.85rem; color:#6b7280;">If you have any immediate questions, simply reply to this email.</p>
+    </div>
+    <div class="footer">
+      &copy; 2026 GrowDigital. All rights reserved.
+    </div>
+  </div>
+</div>
+</body>
+</html>

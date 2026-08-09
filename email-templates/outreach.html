@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Mockup Proposal</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8f9fa; color: #1a1a2e; line-height: 1.6; }
+  .container { max-width: 640px; margin: 0 auto; padding: 20px; }
+  .card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); margin-bottom: 24px; }
+  .hero { background: linear-gradient(135deg, #4f46e5, #7c3aed, #a855f7); padding: 40px 32px; text-align: center; color: #fff; }
+  .hero h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+  .hero p { font-size: 0.95rem; opacity: 0.9; }
+  .body { padding: 32px; }
+  .body h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: #4f46e5; }
+  .body p { font-size: 0.9rem; color: #4b5563; margin-bottom: 16px; }
+  .pricing { display: flex; gap: 16px; margin: 20px 0; }
+  .pricing .box { flex: 1; background: #f8f9fa; border-radius: 12px; padding: 20px; text-align: center; border: 2px solid transparent; transition: border-color 0.2s; }
+  .pricing .box.popular { border-color: #4f46e5; background: #f0f0ff; }
+  .pricing .box h3 { font-size: 0.85rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .pricing .box .amount { font-size: 1.8rem; font-weight: 900; color: #1a1a2e; }
+  .pricing .box .amount span { font-size: 0.85rem; font-weight: 500; color: #9ca3af; }
+  .pricing .box .note { font-size: 0.75rem; color: #4f46e5; font-weight: 600; margin-top: 6px; }
+  .features { list-style: none; padding: 0; margin: 16px 0; }
+  .features li { padding: 6px 0; font-size: 0.85rem; color: #4b5563; display: flex; align-items: flex-start; gap: 8px; }
+  .features li::before { content: '✓'; color: #4f46e5; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .cta { display: inline-block; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; padding: 14px 32px; border-radius: 100px; font-size: 0.9rem; font-weight: 600; text-decoration: none; margin-top: 16px; }
+  .footer { padding: 20px 32px; background: #f9fafb; border-top: 1px solid #e5e7eb; font-size: 0.8rem; color: #9ca3af; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div class="hero">
+      <h1>🚀 Your Business Deserves a Better Online Presence</h1>
+      <p>Custom website + local SEO built for <%= businessName %></p>
+    </div>
+    <div class="body">
+      <h2>Hi <%= ownerName %>,</h2>
+      <p>We've reviewed your business listing and see a huge opportunity to bring in more local customers. Here's what we can do for you:</p>
+
+      <div class="pricing">
+        <div class="box">
+          <h3>Website Mockup</h3>
+          <div class="amount">$200 <span>– $300</span></div>
+          <div class="note">Price negotiable</div>
+        </div>
+        <div class="box popular">
+          <h3>Monthly SEO &amp; Geo</h3>
+          <div class="amount">$120 <span>– $150</span></div>
+          <div class="note">/month</div>
+        </div>
+      </div>
+
+      <p><strong>Website Mockup includes:</strong></p>
+      <ul class="features">
+        <li>Custom design matching your brand and niche</li>
+        <li>Mobile-responsive &amp; fast-loading</li>
+        <li>Up to 5 pages (Home, About, Services, Contact)</li>
+        <li>SEO-optimized structure &amp; meta tags</li>
+        <li>1 revision round included</li>
+      </ul>
+
+      <p><strong>Monthly SEO &amp; Geo Boosting includes:</strong></p>
+      <ul class="features">
+        <li>Google Business Profile optimization</li>
+        <li>Local citation building &amp; management</li>
+        <li>Monthly progress reporting</li>
+        <li>Review monitoring &amp; response strategy</li>
+      </ul>
+
+      <p><strong>Also available:</strong></p>
+      <ul class="features">
+        <li>🤖 AI Representative for calls — answers FAQs, books appointments, 24/7</li>
+        <li>📧 Automation — lead follow-up sequences, invoice reminders</li>
+        <li>📱 Social media management &amp; scheduling</li>
+        <li>📊 Performance dashboard with real-time analytics</li>
+        <li>🎯 Google &amp; Meta ad campaigns for targeted leads</li>
+      </ul>
+
+      <a href="#" class="cta">Let's Talk → Book a Call</a>
+    </div>
+    <div class="footer">
+      <p>Every price is negotiable — let's find the right package for your business.</p>
+      <p>&copy; 2026 GrowDigital. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

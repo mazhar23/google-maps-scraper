@@ -1,0 +1,16 @@
+i want to update this project 
+Every day it should scan Google Maps across 3 cities, finds small businesses with no website or one from 2014, should build  build a beautiful landing page mockup tech must be used (WebGL,GLSL shaders,Lenis.js,requestAnimationFrame,Lenis.js = scroll velocity moves the WebGL camera physically
+requestAnimationFrame = fog and light update every frame on scroll
+WebGL depth of field = distant peaks blur like a real camera lens
+Two hex colors = 3D scene carries every emotion on the page)  renders a 10-second video of it, and sends a personalized cold email(should design best html email) — 
+When a positive reply comes agent can book a zoom call or ask the client to reply on email and  the agent should reply to emails as well .The only time the system wakes me is when a deal breaks $3,000 or the reply rate drops below 12%.
+
+Everything else runs without me automation 
+
+So in short agents should find potential leads 
+Then send them email through brevo SMTP 
+I can only send 300 emails a day 
+
+And continue with positive replies.
+
+find the niche of websites from https://www.awwwards.com/websites and then Give Claude or any other llm  a reference URL to reverse engineer the style and make a mockup to send to client on email.

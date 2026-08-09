@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/api/audit", "destination": "/api/audit.js" },
+    { "source": "/widget.js", "destination": "/api/widget.js" },
+    { "source": "/", "destination": "/api/index.js" },
+    { "source": "/(.*)", "destination": "/api/index.js" }
+  ]
+}
