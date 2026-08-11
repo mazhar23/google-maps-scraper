@@ -24,7 +24,7 @@ export async function generateProposal(leadId, options = {}) {
   const slug = generateSlug(lead.business_name);
   const services = scoreData.recommended_services || [];
   const totalPrice = services.reduce((sum, s) => sum + (s.price_min || 0), 0);
-  const paymentLink = options.paymentLink || '';
+  const paymentLink = options.paymentLink || process.env.CUSTOM_PAYMENT_LINK || '';
 
   // Build the proposal HTML
   const html = buildProposalHtml({

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Redesign Concept for <%= business_name %></title>
+</head>
+<body style="margin:0;padding:0;background-color:#0f172a;font-family:'Helvetica Neue',Arial,sans-serif;color:#f1f5f9;-webkit-text-size-adjust:100%;">
+
+<!-- Preheader (hidden) -->
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">
+  We designed a custom website mockup for <%= business_name %>. See what your business could look like online.
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0f172a;">
+<tr><td align="center" style="padding:20px 0;">
+
+<!-- Container -->
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+
+<!-- Header -->
+<tr><td style="padding:32px 32px 20px;text-align:center;">
+  <div style="font-size:18px;font-weight:800;background:linear-gradient(135deg,#4f46e5,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em;">Artum 8 Labs</div>
+</td></tr>
+
+<!-- Hero Badge -->
+<tr><td style="padding:0 32px 16px;text-align:center;">
+  <span style="display:inline-block;background:rgba(79,70,229,0.12);border:1px solid rgba(79,70,229,0.25);border-radius:100px;padding:5px 18px;font-size:11px;font-weight:600;color:#818cf8;letter-spacing:.04em;">
+    ✨ Custom Design Concept for <%= business_name %>
+  </span>
+</td></tr>
+
+<!-- Hero Title -->
+<tr><td style="padding:0 32px 12px;text-align:center;">
+  <h1 style="margin:0;font-size:28px;font-weight:900;line-height:1.12;letter-spacing:-.02em;color:#f1f5f9;">
+    Hi <%= owner_name %>, we redesigned<br>
+    <span style="background:linear-gradient(135deg,#4f46e5,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"><%= business_name %></span>'s website.
+  </h1>
+</td></tr>
+
+<!-- Hero Subtitle -->
+<tr><td style="padding:0 40px 28px;text-align:center;">
+  <p style="margin:0;font-size:15px;color:#94a3b8;line-height:1.7;">
+    We noticed your current website scored <strong style="color:#f97316;"><%= grade %></strong> in our audit. So we built a custom mockup showing what a modern, professional site could look like for a <%= category %> in <%= city %>.
+  </p>
+</td></tr>
+
+<!-- Mockup Preview Card -->
+<tr><td style="padding:0 24px 28px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1e293b;border-radius:16px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.3);">
+    <!-- Browser toolbar -->
+    <tr><td style="padding:12px 16px;background:#111827;border-bottom:1px solid rgba(255,255,255,0.04);">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ff5f57;margin-right:6px;"></span></td>
+        <td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ffbd2e;margin-right:6px;"></span></td>
+        <td><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#28c840;margin-right:14px;"></span></td>
+        <td><span style="display:inline-block;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.04);font-size:11px;color:#64748b;font-family:monospace;">www.<%= business_name_slug %>.com</span></td>
+      </tr></table>
+    </td></tr>
+    <!-- Mockup body -->
+    <tr><td style="padding:40px 32px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:<%= niche_color %>;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;"><%= business_name %></div>
+      <div style="font-size:24px;font-weight:900;line-height:1.15;color:#f1f5f9;margin-bottom:14px;letter-spacing:-.01em;"><%= mockup_title %></div>
+      <div style="font-size:12px;color:#64748b;letter-spacing:.04em;margin-bottom:24px;"><%= city %> — <%= category %></div>
+      <a href="<%= mockup_url %>" target="_blank" style="display:inline-block;padding:10px 28px;border-radius:100px;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(135deg,<%= niche_color %>,<%= niche_color_alt %>);text-decoration:none;">
+        <%= mockup_cta %>
+      </a>
+      <!-- Stats row -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:28px;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+      <tr>
+        <td width="33%" style="text-align:center;padding-top:20px;">
+          <div style="font-size:18px;font-weight:800;background:linear-gradient(135deg,<%= niche_color %>,<%= niche_color_alt %>);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">24/7</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-top:2px;">Online</div>
+        </td>
+        <td width="33%" style="text-align:center;padding-top:20px;">
+          <div style="font-size:18px;font-weight:800;background:linear-gradient(135deg,<%= niche_color %>,<%= niche_color_alt %>);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">100%</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-top:2px;">Mobile</div>
+        </td>
+        <td width="33%" style="text-align:center;padding-top:20px;">
+          <div style="font-size:18px;font-weight:800;background:linear-gradient(135deg,<%= niche_color %>,<%= niche_color_alt %>);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">A+</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-top:2px;">Design</div>
+        </td>
+      </tr>
+      </table>
+    </td></tr>
+  </table>
+</td></tr>
+
+<!-- View Full Mockup CTA -->
+<tr><td style="padding:0 32px 32px;text-align:center;">
+  <a href="<%= mockup_url %>" target="_blank" style="display:inline-block;padding:16px 40px;border-radius:100px;font-size:15px;font-weight:700;color:#fff;background:linear-gradient(135deg,#4f46e5,#7c3aed);text-decoration:none;box-shadow:0 4px 20px rgba(79,70,229,0.3);">
+    View Your Full Mockup →
+  </a>
+  <p style="margin:12px 0 0;font-size:12px;color:#64748b;">Click to see the full interactive design concept</p>
+</td></tr>
+
+<!-- Current Score Section -->
+<tr><td style="padding:0 32px 28px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1e293b;border-radius:12px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">
+  <tr>
+    <td width="40%" style="padding:24px;text-align:center;border-right:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Current Score</div>
+      <div style="font-size:40px;font-weight:900;color:<%= grade_color %>;">
+        <%= audit_score %>
+      </div>
+      <div style="font-size:14px;font-weight:700;color:<%= grade_color %>;">Grade: <%= grade %></div>
+    </td>
+    <td width="60%" style="padding:24px;">
+      <div style="font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Issues Found</div>
+      {{#each outdated_signals}}
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#ef4444;flex-shrink:0;"></span>
+        <span style="font-size:12px;color:#94a3b8;">{{this}}</span>
+      </div>
+      {{/each}}
+    </td>
+  </tr>
+  </table>
+</td></tr>
+
+<!-- Bottom CTA -->
+<tr><td style="padding:0 32px 16px;text-align:center;">
+  <p style="margin:0;font-size:14px;color:#94a3b8;line-height:1.6;">
+    Every price is negotiable. Reply to this email or
+    <a href="<%= cal_link %>" target="_blank" style="color:#818cf8;font-weight:600;text-decoration:none;">book a free 15-min call</a>
+    to discuss your goals.
+  </p>
+</td></tr>
+
+<!-- Signature -->
+<tr><td style="padding:24px 32px 36px;text-align:center;">
+  <div style="width:60px;height:1px;background:rgba(255,255,255,0.08);margin:0 auto 20px;"></div>
+  <p style="margin:0;font-size:13px;font-weight:600;color:#f1f5f9;">Artum 8 Labs</p>
+  <p style="margin:4px 0 0;font-size:11px;color:#64748b;">Helping local businesses grow online.</p>
+  <p style="margin:8px 0 0;font-size:10px;color:#475569;">
+    <a href="mailto:<%= reply_to %>" style="color:#64748b;text-decoration:none;"><%= reply_to %></a>
+  </p>
+</td></tr>
+
+</table>
+
+</td></tr>
+</table>
+
+</body>
+</html>
