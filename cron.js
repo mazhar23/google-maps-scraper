@@ -2,8 +2,9 @@ import cron from 'node-cron';
 import { runPipeline } from './pipeline.js';
 import { checkImapReplies } from './reply-detector.js';
 import { getLeadsByStatus, getLeadsForFollowUp, getDb } from './db.js';
-import { sendEmail } from './email-sender.js';
+import { sendEmail, loadTemplate } from './email-sender.js';
 import { advanceLead } from './crm.js';
+import { renderTemplate } from './template-renderer.js';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -43,8 +44,7 @@ cron.schedule('0 8 * * *', async () => {
       return;
     }
 
-    const templatePath = path.join(process.cwd(), 'email-templates', 'audit-first-touch.html');
-    const htmlTemplate = await fs.readFile(templatePath, 'utf8');
+    const htmlTemplate = await loadTemplate('audit-first-touch.html');
 
     let sentCount = 0;
     for (const lead of leads) {
@@ -59,25 +59,22 @@ cron.schedule('0 8 * * *', async () => {
       else if (score >= 65) { grade = 'C'; gradeColor = '#f59e0b'; }
       else if (score >= 50) { grade = 'D'; gradeColor = '#f97316'; }
 
-      let html = htmlTemplate
-        .replace(/<%= business_name %>/g, lead.business_name)
-        .replace(/<%= owner_name %>/g, lead.owner_name || 'there')
-        .replace(/<%= audit_score %>/g, score)
-        .replace(/<%= grade %>/g, grade)
-        .replace(/<%= grade_color %>/g, gradeColor)
-        .replace(/<%= category %>/g, lead.category || 'local business')
-        .replace(/<%= city %>/g, lead.city || 'your city')
-        .replace(/<%= review_count %>/g, lead.reviews_count || 'several')
-        .replace(/<%= reply_to %>/g, process.env.FROM_EMAIL || '');
+      const signals = (lead.outdated_signals || ['Missing mobile optimization', 'Slow load times', 'Outdated design'])
+        .filter(s => s && s !== 'No obvious outdated signals found')
+        .slice(0, 3);
 
-      let signalsHtml = '';
-      const signals = lead.outdated_signals || ['Missing mobile optimization', 'Slow load times', 'Outdated design'];
-      signals.slice(0, 3).forEach(s => {
-        signalsHtml += `<li class="issue-item">${s}</li>`;
+      const html = renderTemplate(htmlTemplate, {
+        business_name: lead.business_name || 'Your Business',
+        owner_name: lead.owner_name || 'there',
+        audit_score: score,
+        grade: grade,
+        grade_color: gradeColor,
+        category: lead.category || 'local business',
+        city: lead.city || 'your city',
+        review_count: lead.review_count || 'several',
+        reply_to: process.env.FROM_EMAIL || '',
+        outdated_signals: signals,
       });
-      
-      // Since template loops aren't native in basic replace, we inject the generated HTML for the list items
-      html = html.replace(/<% outdated_signals\.slice\(0,3\)\.forEach\(function\(signal\) { %>[\s\S]*?<% }\); %>/g, signalsHtml);
 
       try {
         await sendEmail({
@@ -133,8 +130,8 @@ cron.schedule('0 9 * * *', async () => {
       }
     }
 
-    const day4Template = await fs.readFile(path.join(process.cwd(), 'email-templates', 'competitor-case-study.html'), 'utf8');
-    const day10Template = await fs.readFile(path.join(process.cwd(), 'email-templates', 'social-proof.html'), 'utf8');
+    const day4Template = await loadTemplate('competitor-case-study.html');
+    const day10Template = await loadTemplate('social-proof.html');
 
     let followUpCount = 0;
 
@@ -144,17 +141,17 @@ cron.schedule('0 9 * * *', async () => {
         const email = lead.owner_email || lead.emails?.[0];
         if (!email) continue;
 
-        let html = template
-          .replace(/<%= business_name %>/g, lead.business_name)
-          .replace(/<%= owner_name %>/g, lead.owner_name || 'there')
-          .replace(/<%= category %>/g, lead.category || 'local business')
-          .replace(/<%= city %>/g, lead.city || 'your city')
-          .replace(/<%= reply_to %>/g, process.env.FROM_EMAIL || '')
-          // Simple fallbacks for template specific vars
-          .replace(/<%= competitor_name %>/g, 'a competitor')
-          .replace(/<%= outdated_signal_1 %>/g, lead.outdated_signals?.[0] || 'an outdated design')
-          .replace(/<%= old_metric %>/g, 'almost no traffic')
-          .replace(/<%= new_metric %>/g, 'consistent inbound leads');
+        let html = renderTemplate(template, {
+          business_name: lead.business_name || 'Your Business',
+          owner_name: lead.owner_name || 'there',
+          category: lead.category || 'local business',
+          city: lead.city || 'your area',
+          reply_to: process.env.FROM_EMAIL || '',
+          competitor_name: 'a competitor',
+          outdated_signal_1: lead.outdated_signals?.[0] || 'an outdated design',
+          old_metric: 'almost no traffic',
+          new_metric: 'consistent inbound leads',
+        });
 
         try {
           await sendEmail({
@@ -198,8 +195,8 @@ cron.schedule('0 10 * * *', async () => {
     const day30Leads = getLeadsForFollowUp(720, 'closed_won');
     const day60Leads = getLeadsForFollowUp(1440, 'closed_won');
 
-    const day30Template = await fs.readFile(path.join(process.cwd(), 'email-templates', 'referral-30.html'), 'utf8');
-    const day60Template = await fs.readFile(path.join(process.cwd(), 'email-templates', 'referral-60.html'), 'utf8');
+    const day30Template = await loadTemplate('referral-30.html');
+    const day60Template = await loadTemplate('referral-60.html');
 
     let sentCount = 0;
 
@@ -208,11 +205,12 @@ cron.schedule('0 10 * * *', async () => {
         const email = lead.owner_email || lead.emails?.[0];
         if (!email) continue;
 
-        let html = template
-          .replace(/<%= business_name %>/g, lead.business_name)
-          .replace(/<%= owner_name %>/g, lead.owner_name || 'there')
-          .replace(/<%= city %>/g, lead.city || 'your area')
-          .replace(/<%= cal_link %>/g, process.env.CAL_LINK || 'https://cal.com/artum8labs');
+        let html = renderTemplate(template, {
+          business_name: lead.business_name || 'Your Business',
+          owner_name: lead.owner_name || 'there',
+          city: lead.city || 'your area',
+          cal_link: process.env.CAL_LINK || 'https://cal.com/artum8labs',
+        });
 
         try {
           await sendEmail({

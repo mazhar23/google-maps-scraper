@@ -1,104 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Audit: <%= business_name %></title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  .wrapper { width: 100%; table-layout: fixed; background-color: #f3f4f6; padding: 40px 20px; }
-  .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); }
-  
-  /* Header / Hero */
-  .header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 40px 30px; text-align: center; position: relative; }
-  .header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); }
-  .header h1 { color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
-  .header p { color: #94a3b8; font-size: 15px; margin: 0; }
-  
-  /* Body */
-  .body-content { padding: 40px 30px; }
-  .greeting { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 20px; }
-  .intro { font-size: 16px; color: #4b5563; margin-bottom: 24px; }
-  
-  /* Score Card */
-  .score-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 24px; }
-  .score-title { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; margin-bottom: 12px; }
-  .score-circle { width: 80px; height: 80px; border-radius: 50%; background: #ffffff; border: 4px solid <%= grade_color %>; display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-  .score-value { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1; }
-  .score-text { font-size: 16px; font-weight: 600; color: #334155; }
-  
-  /* Issues List */
-  .issues-container { margin-bottom: 28px; }
-  .issues-title { font-size: 16px; font-weight: 700; color: #ef4444; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-  .issue-list { list-style: none; margin: 0; padding: 0; }
-  .issue-item { display: flex; align-items: flex-start; padding: 12px 16px; background: #fff1f2; border-left: 3px solid #ef4444; border-radius: 0 8px 8px 0; margin-bottom: 8px; font-size: 15px; color: #991b1b; }
-  .issue-item:before { content: '⚠️'; margin-right: 12px; font-size: 14px; margin-top: 2px; }
-  
-  /* Impact Statement */
-  .impact { background: #eff6ff; border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; border-left: 4px solid #3b82f6; }
-  .impact p { font-size: 15px; color: #1e3a8a; margin: 0; font-weight: 500; }
-  
-  /* CTA */
-  .cta-wrapper { text-align: center; margin-bottom: 20px; }
-  .cta-button { display: inline-block; background: #0f172a; color: #ffffff !important; font-size: 16px; font-weight: 600; text-decoration: none; padding: 16px 32px; border-radius: 100px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: transform 0.2s; }
-  .cta-text { font-size: 15px; color: #6b7280; text-align: center; }
-  
-  /* Footer */
-  .footer { background: #ffffff; padding: 30px; text-align: center; border-top: 1px solid #f3f4f6; }
-  .signature { font-size: 18px; font-weight: 800; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
-  .footer-text { font-size: 13px; color: #9ca3af; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Audit: {{business_name}}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f3f4f6; color: #1f2937; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .wrapper { width: 100%; table-layout: fixed; background-color: #f3f4f6; padding: 40px 20px; }
+    .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); }
+    .header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 40px 30px; text-align: center; position: relative; }
+    .header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); }
+    .header h1 { color: #ffffff; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .header p { color: #94a3b8; font-size: 15px; margin: 0; }
+    .body-content { padding: 40px 30px; }
+    .greeting { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 20px; }
+    .intro { font-size: 16px; color: #4b5563; margin-bottom: 24px; }
+    .score-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; text-align: center; margin-bottom: 24px; }
+    .score-title { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; margin-bottom: 12px; }
+    .score-circle { width: 80px; height: 80px; border-radius: 50%; background: #ffffff; border: 4px solid {{grade_color}}; display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .score-value { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1; }
+    .score-text { font-size: 16px; font-weight: 600; color: #334155; }
+    .issues-container { margin-bottom: 28px; }
+    .issues-title { font-size: 16px; font-weight: 700; color: #ef4444; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .issue-list { list-style: none; margin: 0; padding: 0; }
+    .issue-item { display: flex; align-items: flex-start; padding: 12px 16px; background: #fff1f2; border-left: 3px solid #ef4444; border-radius: 0 8px 8px 0; margin-bottom: 8px; font-size: 15px; color: #991b1b; }
+    .impact { background: #eff6ff; border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; border-left: 4px solid #3b82f6; }
+    .impact p { font-size: 15px; color: #1e3a8a; margin: 0; font-weight: 500; }
+    .cta-wrapper { text-align: center; margin-bottom: 20px; }
+    .cta-button { display: inline-block; background: #0f172a; color: #ffffff !important; font-size: 16px; font-weight: 600; text-decoration: none; padding: 16px 32px; border-radius: 100px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); }
+    .cta-text { font-size: 15px; color: #6b7280; text-align: center; }
+    .footer { background: #ffffff; padding: 30px; text-align: center; border-top: 1px solid #f3f4f6; }
+    .signature { font-size: 18px; font-weight: 800; background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+    .footer-text { font-size: 13px; color: #9ca3af; }
+  </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="container">
-      
       <div class="header">
         <h1>Website Performance Audit</h1>
-        <p>Prepared for <%= business_name %></p>
+        <p>Prepared for {{business_name}}</p>
       </div>
-      
       <div class="body-content">
-        <div class="greeting">Hi <%= owner_name %>,</div>
-        
+        <div class="greeting">Hi {{owner_name}},</div>
         <div class="intro">
-          I ran a quick technical audit on <strong><%= business_name %></strong>'s website to see how it's performing in local search. Here's what I found:
+          I ran a quick technical audit on <strong>{{business_name}}</strong>'s website to see how it's performing in local search. Here's what I found:
         </div>
-        
         <div class="score-card">
           <div class="score-title">Overall Score</div>
           <div class="score-circle">
-            <div class="score-value"><%= audit_score %></div>
+            <div class="score-value">{{audit_score}}</div>
           </div>
-          <div class="score-text">Grade: <span style="color: <%= grade_color %>; font-weight: 800;"><%= grade %></span></div>
+          <div class="score-text">Grade: <span style="color: {{grade_color}}; font-weight: 800;">{{grade}}</span></div>
         </div>
-        
         <div class="issues-container">
           <div class="issues-title">The Biggest Issues Detected:</div>
           <ul class="issue-list">
-            <% outdated_signals.slice(0,3).forEach(function(signal) { %>
-              <li class="issue-item"><%= signal %></li>
-            <% }); %>
+            {{#each outdated_signals}}
+            <li class="issue-item">{{this}}</li>
+            {{/each}}
           </ul>
         </div>
-        
         <div class="impact">
-          <p>For a <%= category %> in <%= city %> with <%= review_count %> reviews, these technical gaps are directly causing you to lose potential customers to competitors.</p>
+          <p>For a {{category}} in {{city}} with {{review_count}} reviews, these technical gaps are directly causing you to lose potential customers to competitors.</p>
         </div>
-        
         <div class="cta-wrapper">
-          <a href="mailto:<%= reply_to %>?subject=Show me the fix plan for <%= business_name %>" class="cta-button">I built a fix plan. Reply to see it &rarr;</a>
+          <a href="mailto:{{reply_to}}?subject=Show me the fix plan for {{business_name}}" class="cta-button">I built a fix plan. Reply to see it &rarr;</a>
         </div>
         <p class="cta-text">No hard pitch, just happy to share the strategy.</p>
-        
       </div>
-      
       <div class="footer">
         <div class="signature">Artum 8 Labs</div>
-        <div class="footer-text">Helping <%= city %> businesses grow online.</div>
-      </div>
-      
+        <div class="footer-text">Helping {{city}} businesses grow online.</div>
+      </footer>
     </div>
   </div>
 </body>
