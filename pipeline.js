@@ -20,6 +20,7 @@ import {
 import { scoreLead } from './lead-scorer.js';
 import { advanceLead } from './crm.js';
 import { checkImapReplies } from './reply-detector.js';
+import { verifyEmail } from './email-verifier.js';
 
 export async function runPipeline({
   query = 'local services',
@@ -69,11 +70,30 @@ export async function runPipeline({
           if (seen.has(key)) continue;
           seen.add(key);
 
-          const audit = base.website ? await auditWebsite(base.website) : await auditWebsite('');
-          const contacts = await extractContactsFromWebsite({
-            website: base.website,
-            businessName: base.business_name,
-          });
+      const audit = base.website ? await auditWebsite(base.website) : await auditWebsite('');
+      const contacts = await extractContactsFromWebsite({
+        website: base.website,
+        businessName: base.business_name,
+      });
+
+      // Verify emails (basic MX check + optional API verification)
+      const allEmails = [...(contacts.emails || []), contacts.owner_email].filter(Boolean);
+      const verifiedEmails = [];
+      for (const email of allEmails) {
+        const result = await verifyEmail(email, {
+          zerobounceKey: process.env.ZEROBOUNCE_API_KEY,
+          hunterKey: process.env.HUNTER_API_KEY,
+        });
+        if (result.valid) {
+          verifiedEmails.push(email);
+        }
+      }
+      if (verifiedEmails.length > 0) {
+        contacts.emails = verifiedEmails;
+        if (contacts.owner_email && verifiedEmails.includes(contacts.owner_email)) {
+          contacts.owner_email = contacts.owner_email;
+        }
+      }
 
           const enriched = {
             lead_id: listing.lead_id || uuidv4(),
